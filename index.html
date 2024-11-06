@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seasonal Landscape & Bulb Toggler</title>
+  <style>
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-      }
-  
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background-color: #f5f5f5;
-        color: #333;
-      }
-  
-      .container {
-        text-align: center;
-        width: 90%;
-        max-width: 500px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-  
-      h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        color: #333;
-      }
-  
-      .image-container {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        border-radius: 8px;
-      }
-      #landscape {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    #landscape {
       width: 100%;
       height: auto;
       border-radius: 8px;
@@ -106,28 +107,60 @@
         font-size: 14px;
       }
     }
-
-    </style>
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Seasonal Landscape & Bulb Toggler</h1>
-        <div class="image-container">
-          <img id="landscape" src="summer.jpg" alt="Landscape">
-          <img id="bulb" class="bulb off summer-bulb" src="bulb-off.png" alt="Bulb">
-        </div>
+  <div class="container">
+    <h1>Seasonal Landscape & Bulb Toggler</h1>
+    <div class="image-container">
+      <img id="landscape" src="summer.jpg" alt="Landscape">
+      <img id="bulb" class="bulb off summer-bulb" src="bulb-off.png" alt="Bulb">
+    </div>
+    <div class="buttons">
+      <button class="summer" onclick="changeSeason('summer')">Summer</button>
+      <button class="winter" onclick="changeSeason('winter')">Winter</button>
+      <button class="monsoon" onclick="changeSeason('monsoon')">Monsoon</button>
+      <button class="bulb-toggle" onclick="toggleBulb()">Toggle Bulb</button>
+    </div>
+  </div>
 
-        <div class="buttons">
-            <button class="summer" onclick="changeSeason('summer')">Summer</button>
-            <button class="winter" onclick="changeSeason('winter')">Winter</button>
-            <button class="monsoon" onclick="changeSeason('monsoon')">Monsoon</button>
-            <button class="bulb-toggle" onclick="toggleBulb()">Toggle Bulb</button>
-          </div>
-        </div>
-   <script>
-    
-   </script>   
-      
-    
+  <script>
+    let bulbOn = false;
+
+    function changeSeason(season) {
+      const landscape = document.getElementById('landscape');
+      const bulb = document.getElementById('bulb');
+      bulbOn = false; // Reset the bulb to off whenever a new season is selected
+
+      // Reset the bulb display
+      bulb.classList.remove('on');
+      bulb.classList.add('off');
+
+      // Update landscape and bulb style based on the season
+      switch (season) {
+        case 'summer':
+          landscape.src = 'summer.jpg'; // Update to actual image path
+          bulb.className = 'bulb off summer-bulb';
+          break;
+        case 'winter':
+          landscape.src = 'winter.jpg'; // Update to actual image path
+          bulb.className = 'bulb off winter-bulb';
+          break;
+        case 'monsoon':
+          landscape.src = 'monsoon.jpg'; // Update to actual image path
+          bulb.className = 'bulb off monsoon-bulb';
+          break;
+      }
+    }
+
+    function toggleBulb() {
+      const bulb = document.getElementById('bulb');
+      bulbOn = !bulbOn;
+
+      // Update bulb class based on the toggle state for quick and smooth transition
+      bulb.classList.toggle('on', bulbOn);
+      bulb.classList.toggle('off', !bulbOn);
+    }
+  </script>
 </body>
 </html>
