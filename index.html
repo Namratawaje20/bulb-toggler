@@ -129,24 +129,24 @@
     function changeSeason(season) {
       const landscape = document.getElementById('landscape');
       const bulb = document.getElementById('bulb');
-      bulbOn = false; // Reset the bulb to off whenever a new season is selected
+      bulbOn = false;
 
-      // Reset the bulb display
+      
       bulb.classList.remove('on');
       bulb.classList.add('off');
 
-      // Update landscape and bulb style based on the season
+
       switch (season) {
         case 'summer':
-          landscape.src = 'summer.jpg'; // Update to actual image path
+          landscape.src = 'summer.jpg'; 
           bulb.className = 'bulb off summer-bulb';
           break;
         case 'winter':
-          landscape.src = 'winter.jpg'; // Update to actual image path
+          landscape.src = 'winter.jpg'; 
           bulb.className = 'bulb off winter-bulb';
           break;
         case 'monsoon':
-          landscape.src = 'monsoon.jpg'; // Update to actual image path
+          landscape.src = 'monsoon.jpg'; 
           bulb.className = 'bulb off monsoon-bulb';
           break;
       }
@@ -156,7 +156,7 @@
       const bulb = document.getElementById('bulb');
       bulbOn = !bulbOn;
 
-      // Update bulb class based on the toggle state for quick and smooth transition
+      
       bulb.classList.toggle('on', bulbOn);
       bulb.classList.toggle('off', !bulbOn);
     }
